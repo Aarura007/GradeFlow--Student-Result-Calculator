@@ -14,6 +14,12 @@ A responsive student result calculator built with plain HTML, CSS and JavaScript
 
 No build tools or dependencies are required. Google Fonts are loaded online; system fonts will be used if offline.
 
+## 🚀 Live Demo
+
+Check out the live website here:
+
+🔗[**GradeFlow – Student Result Calculator**](https://gradeflow-student-result-calculator-nine.vercel.app/)
+
 ## Features
 - Student name and five subject mark inputs
 - Validation for missing marks and values outside 0–100
