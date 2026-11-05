@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#101827" />
+ 
+  <title>GradeFlow — Student Result Calculator</title>
+ 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+    rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css" />
+
+</head>
+
+<body>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="GradeFlow home">
+      <span class="brand-mark">G</span>
+      <span>Gradeflow<span class="brand-dot">.</span></span>
+    </a>
+    
+    <div class="topbar-right">
+      <span class="topbar-label"><span class="live-dot"></span> STUDENT PERFORMANCE</span>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch theme">
+        <span id="themeIcon">☀</span><span id="themeText">Light mode</span>
+      </button>
+    </div>
+  
+  </header>
+
+  <main class="page-shell">
+    <section class="hero">
+     
+      <div class="hero-copy">
+        
+        <div class="eyebrow"><span class="eyebrow-line"></span> YOUR ACADEMIC SNAPSHOT</div>
+        
+        <h1>Turn your marks<br>into <span class="gradient-text">milestones.</span></h1>
+        
+        <p class="hero-description">A smarter way to understand your performance. Add your marks, calculate your result,
+          and see how far you've come.</p>
+        
+        <div class="hero-meta">
+          <span>✦ 5 subjects</span><span>✦ Instant results</span><span>✦ Zero guesswork</span>
+        </div>
+      
+      </div>
+      
+      <div class="hero-art" aria-hidden="true">
+        
+        <div class="orbit orbit-one"></div>
+        <div class="orbit orbit-two"></div>
+        <div class="hero-glow"></div>
+        <div class="floating-card floating-card-top"><span class="mini-icon">↗</span><span><b>Track
+             progress</b><small>One step at a time</small></span></div>
+        <div class="grade-orb"><span class="orb-small">YOUR GRADE</span><strong>A+</strong><span
+            class="orb-caption">potential unlocked</span></div>
+        <div class="floating-card floating-card-bottom"><span
+            class="mini-bars"><i></i><i></i><i></i><i></i></span><span><b>Keep growing</b><small>Every mark
+              counts</small></span></div>
+      </div>
+    </section>
+
+    <div class="content-grid">
+      <section class="panel input-panel">
+        <div class="panel-heading">
+          <div><span class="section-kicker">01 / INPUT</span>
+            <h2>Enter your details</h2>
+            <p>Let's see what your hard work adds up to.</p>
+          </div>
+          <span class="step-badge">01</span>
+        </div>
+
+        <form id="resultForm" novalidate>
+          <label class="field-label" for="studentName">STUDENT NAME</label>
+          <input class="text-input" id="studentName" type="text" placeholder="e.g. Alex Morgan" maxlength="60"
+            autocomplete="name" />
+
+          <div class="subject-heading"><span class="field-label">SUBJECT MARKS</span><span class="out-of">OUT OF 100
+              EACH</span></div>
+          <div class="subject-list">
+            
+            <label class="subject-row"><span class="subject-icon icon-blue">M</span><span
+                class="subject-name">Mathematics<small>Subject 01</small></span><input class="mark-input" type="number"
+                id="maths" min="0" max="100" step="1" placeholder="00" required aria-label="Mathematics marks"><span
+                class="mark-unit">/ 100</span>
+            </label>
+            
+            <label class="subject-row"><span class="subject-icon icon-purple">P</span><span
+                class="subject-name">Physics<small>Subject 02</small></span><input class="mark-input" type="number"
+                id="physics" min="0" max="100" step="1" placeholder="00" required aria-label="Physics marks"><span
+                class="mark-unit">/ 100</span>
+            </label>
+            
+            <label class="subject-row"><span class="subject-icon icon-orange">C</span><span
+                class="subject-name">Chemistry<small>Subject 03</small></span><input class="mark-input" type="number"
+                id="chemistry" min="0" max="100" step="1" placeholder="00" required aria-label="Chemistry marks"><span
+                class="mark-unit">/ 100</span>
+            </label>
+            
+            <label class="subject-row"><span class="subject-icon icon-green">E</span><span
+                class="subject-name">English<small>Subject 04</small></span><input class="mark-input" type="number"
+                id="english" min="0" max="100" step="1" placeholder="00" required aria-label="English marks"><span
+                class="mark-unit">/ 100</span>
+            </label>
+            
+            <label class="subject-row"><span class="subject-icon icon-pink">C</span><span class="subject-name">Computer
+                Science<small>Subject 05</small></span><input class="mark-input" type="number" id="computer" min="0"
+                max="100" step="1" placeholder="00" required aria-label="Computer Science marks"><span
+                class="mark-unit">/ 100</span>
+            </label>
+          </div>
+
+          <p class="form-message" id="formMessage" role="alert" aria-live="polite"></p>
+          <div class="form-actions">
+            <button class="btn btn-primary" type="submit"><span>Calculate result</span><span
+                class="btn-arrow">↗</span></button>
+            <button class="btn btn-ghost" type="reset" id="resetButton">↺ &nbsp; Reset</button>
+          </div>
+          <p class="privacy-note"><span>✦</span> Your marks stay in this browser session.</p>
+        </form>
+      </section>
+
+      <section class="panel result-panel" id="resultPanel" aria-live="polite">
+        <div class="panel-heading result-heading">
+          <div><span class="section-kicker">02 / OVERVIEW</span>
+            <h2>Your result</h2>
+            <p id="resultSubtitle">Your academic summary will appear here.</p>
+          </div>
+          <span class="result-status status-pending" id="statusBadge">AWAITING</span>
+        </div>
+
+        <div class="empty-state" id="emptyState">
+          <div class="empty-illustration">
+            <div class="empty-ring"></div>
+            <div class="empty-sheet"><span></span><span></span><span></span><b>?</b></div>
+            <div class="sparkle sparkle-a">✦</div>
+            <div class="sparkle sparkle-b">✧</div>
+          </div>
+          <h3>Your next milestone starts here.</h3>
+          <p>Fill in your subject marks and hit <b>Calculate result</b> to reveal your academic snapshot.</p>
+        </div>
+
+        <div class="result-content hidden" id="resultContent">
+          <div class="score-card">
+            <div class="score-copy"><span class="score-label">OVERALL PERCENTAGE</span>
+              <div class="score-number"><strong id="percentageValue">0</strong><span>%</span></div>
+              <p id="performanceMessage">Great effort. Keep it up!</p>
+            </div>
+            <div class="grade-circle" id="gradeCircle"><span>GRADE</span><strong id="gradeValue">A+</strong></div>
+            <div class="progress-track">
+              <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="progress-caption"><span>0%</span><span id="progressCaption">0% achieved</span><span>100%</span>
+            </div>
+          </div>
+
+          <div class="stat-grid">
+            <div class="stat-card"><span class="stat-icon">▤</span><span class="stat-label">TOTAL MARKS</span><strong
+                id="totalValue">0 <small>/ 500</small></strong></div>
+            <div class="stat-card"><span class="stat-icon">∅</span><span class="stat-label">AVERAGE</span><strong
+                id="averageValue">0.00</strong></div>
+          </div>
+
+          <div class="table-heading">
+            <div><span class="section-kicker">BREAKDOWN</span>
+              <h3>Subject performance</h3>
+            </div><span class="table-count">05 SUBJECTS</span>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>SUBJECT</th>
+                  <th>MARKS</th>
+                  <th>STATUS</th>
+                </tr>
+              </thead>
+              <tbody id="subjectTableBody"></tbody>
+            </table>
+          </div>
+          <div class="result-footer">
+            <span id="resultName">Prepared for student</span>
+            <button class="btn btn-print" id="printButton" type="button">↗ &nbsp; Print results</button>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <section class="grading-panel">
+      <div class="grading-title"><span class="section-kicker">THE RULEBOOK</span>
+        <h2>Know your grade.</h2>
+        <p>Transparent criteria. No surprises.</p>
+      </div>
+      <div class="grade-rules">
+        <div class="grade-rule"><b class="grade-chip chip-a">A+</b><span>90–100%</span></div>
+        <div class="grade-rule"><b class="grade-chip chip-b">A</b><span>80–89%</span></div>
+        <div class="grade-rule"><b class="grade-chip chip-c">B</b><span>70–79%</span></div>
+        <div class="grade-rule"><b class="grade-chip chip-d">C</b><span>60–69%</span></div>
+        <div class="grade-rule"><b class="grade-chip chip-e">D</b><span>50–59%</span></div>
+        <div class="grade-rule"><b class="grade-chip chip-f">E</b><span>35–49%</span></div>
+        <div class="grade-rule"><b class="grade-chip chip-f">F</b><span>Below 35%</span></div>
+      </div>
+      <div class="pass-note"><span>✓</span>
+        <p><b>Pass criteria</b><br>At least 35 marks in every subject. One subject below 35 means the overall result is
+          Fail.</p>
+      </div>
+    </section>
+
+    <footer class="footer"><a class="brand footer-brand" href="#"><span class="brand-mark">G</span><span>gradeflow<span
+            class="brand-dot">.</span></span></a><span>Made for the next big thing. <b>✦</b></span><span>STUDY SMART.
+        AIM HIGH.</span></footer>
+  </main>
+ 
+  <script src="script.js"></script>
+
+</body>
+
+</html>
